@@ -1,0 +1,626 @@
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  /* Dark mode colors */
+  --text-color: #E3E3E3;
+  --subheading-color: #828282;
+  --placeholder-color: #A6A6A6;
+  --primary-color: #242424;
+  --secondary-color: #383838;
+  --secondary-hover-color: #444;
+}
+
+.light_mode {
+  /* Light mode colors */
+  --text-color: #222;
+  --subheading-color: #A0A0A0;
+  --placeholder-color: #6C6C6C;
+  --primary-color: #FFF;
+  --secondary-color: #E9EEF6;
+  --secondary-hover-color: #DBE1EA;
+}
+
+body {
+  background: var(--primary-color);
+}
+
+.header, .chat-list .message, .typing-form {
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+.header {
+  margin-top: 6vh;
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+body.hide-header .header {
+  margin: 0;
+  display: none;
+}
+
+.header :where(.title, .subtitle) {
+  color: var(--text-color);
+  font-weight: 500;
+  line-height: 4rem;
+}
+
+.header .title {
+  font-size: 3.5rem; /* Text size */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase text */
+  color: #4285f4; /* Initial color */
+  animation: text-color-change 8s infinite; /* Animation for color change */
+}
+
+@keyframes text-color-change {
+  0% { color: #4285f4; } /* Blue */
+  25% { color: #34a853; } /* Green */
+  50% { color: #fbbc05; } /* Yellow */
+  75% { color: #ea4335; } /* Red */
+  100% { color: #4285f4; } /* Back to Blue */
+}
+
+.header .subtitle {
+  font-size: 2.6rem; /* Font size */
+  color: var(--subheading-color); /* Custom color */
+  font-weight: 500; /* Slightly bold text */
+  letter-spacing: 1px; /* Add some spacing between letters */
+  text-transform: capitalize; /* Capitalize the first letter of each word */
+  line-height: 1.5; /* Better line spacing */
+  background: linear-gradient(to right, #51d8f1, #3f176f); /* Gradient background */
+  -webkit-background-clip: text; /* Clip background to text */
+  -webkit-text-fill-color: transparent; /* Text fill transparent to show gradient */
+  transition: all 0.3s ease; /* Smooth transition for effects */
+}
+
+.header .subtitle:hover {
+  transform: translateY(-5px); /* Hover effect to lift text */
+  color: #e543e0; /* Change color on hover */
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect for depth */
+  background: linear-gradient(to right, #f0c27b, #4b1248); /* Subtle gradient background on hover */
+  -webkit-background-clip: text; /* Clip background to text */
+  -webkit-text-fill-color: transparent; /* Text fill transparent to show gradient */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.suggestion-list {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 9.5vh;
+  overflow: hidden;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #4285f4 #e0e0e0; /* Custom scrollbar color */
+  padding: 1rem 0; /* Add vertical padding */
+  background-image: url('D/file-RMVMV64uzbNUJvU2BfRqN5.webp'); /* Image as background */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Position the image at the center */
+  border-radius: 15px; /* Rounded corners for the list */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.suggestion-list::-webkit-scrollbar {
+  height: 8px; /* Scrollbar height */
+}
+
+.suggestion-list::-webkit-scrollbar-thumb {
+  background-color: #4285f4; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+
+.suggestion-list::-webkit-scrollbar-track {
+  background-color: #e0e0e0; /* Color of the scrollbar track */
+}
+
+/* Optional hover effect for list items */
+.suggestion-list li:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  transition: transform 0.3s ease-in-out; /* Smooth zoom transition */
+}
+
+.suggestion-list::-webkit-scrollbar {
+  height: 8px; /* Scrollbar height */
+}
+
+.suggestion-list::-webkit-scrollbar-thumb {
+  background-color: #4285f4; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+
+.suggestion-list::-webkit-scrollbar-track {
+  background-color: #e0e0e0; /* Color of the scrollbar track */
+}
+
+/* Optional hover effect for list items */
+.suggestion-list li:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  transition: transform 0.3s ease-in-out; /* Smooth zoom transition */
+}
+
+.suggestion-list::-webkit-scrollbar {
+  height: 8px; /* Scrollbar height */
+}
+
+.suggestion-list::-webkit-scrollbar-thumb {
+  background-color: #4285f4; /* Thumb color */
+  border-radius: 10px; /* Rounded corners for the scrollbar */
+}
+
+.suggestion-list::-webkit-scrollbar-track {
+  background-color: #e0e0e0; /* Track color */
+}
+
+.suggestion-list .suggestion {
+  cursor: pointer;
+  padding: 1.25rem;
+  width: 222px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-radius: 0.75rem;
+  justify-content: space-between;
+  background: var(--secondary-color);
+  transition: transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions for scale and shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.suggestion-list .suggestion:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  background: var(--secondary-hover-color); /* Change background on hover */
+}
+
+.suggestion-list .suggestion :where(.text, .icon) {
+  font-weight: 400;
+  color: var(--text-color);
+  transition: color 0.2s ease, font-weight 0.2s ease; /* Smooth transition for text color and weight */
+}
+
+.suggestion-list .suggestion:hover :where(.text, .icon) {
+  color: var(--hover-text-color); /* Change text color on hover */
+  font-weight: 600; /* Bold text on hover */
+}
+
+.suggestion-list .suggestion .icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  font-size: 1.3rem;
+  margin-top: 2.5rem;
+  align-self: flex-end;
+  align-items: center;
+  border-radius: 50%; /* Circle shape for the icon */
+  justify-content: center;
+  color: var(--text-color);
+  background: var(--primary-color);
+  transition: background 0.3s ease, transform 0.2s ease; /* Smooth background and scale transition */
+}
+
+.suggestion-list .suggestion .icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  font-size: 1.3rem;
+  margin-top: 2.5rem;
+  align-self: flex-end;
+  align-items: center;
+  border-radius: 50%; /* Circle shape for the icon */
+  justify-content: center;
+  color: var(--text-color);
+  background: var(--primary-color);
+  transition: background 0.3s ease, transform 0.2s ease; /* Smooth background and scale transition */
+}
+
+.suggestion-list .suggestion .icon:hover {
+  background: var(--primary-hover-color); /* Change background color on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+  color: var(--hover-text-color); /* Change text color on hover */
+}
+
+.chat-list {
+  padding: 2rem 1rem 12rem;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-color: #999 transparent; /* Custom scrollbar color */
+  scrollbar-width: thin; /* Make the scrollbar thin */
+}
+
+.chat-list::-webkit-scrollbar {
+  width: 10px; /* Set width of the scrollbar */
+}
+
+.chat-list::-webkit-scrollbar-thumb {
+  background-color: #4285f4; /* Set thumb color */
+  border-radius: 10px; /* Rounded corners */
+  border: 2px solid #fff; /* Add a white border around the thumb */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add subtle shadow for depth */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.chat-list::-webkit-scrollbar-thumb:hover {
+  background-color: #34a853; /* Change color on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.chat-list::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Light grey background for the track */
+  border-radius: 10px; /* Rounded corners for track */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle inner shadow for depth */
+}
+
+.chat-list::-webkit-scrollbar {
+  width: 8px; /* Set width of the scrollbar */
+}
+
+.chat-list::-webkit-scrollbar-thumb {
+  background-color: #62a1e4; /* Scrollbar thumb color */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+
+.chat-list::-webkit-scrollbar-track {
+  background-color: transparent; /* Transparent track */
+}
+
+.chat-list .message.incoming {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem; /* Added padding for better spacing */
+  border-radius: 1rem; /* Rounded corners for the message bubble */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  animation: colorChange 1.3s infinite; /* Background color changing every 1.3s */
+  transition: transform 0.3s ease; /* Smooth scale transition */
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #891717; /* First color */
+  }
+  25% {
+    background-color: #3b5998; /* Second color */
+  }
+  50% {
+    background-color: #f39c12; /* Third color */
+  }
+  75% {
+    background-color: #16a085; /* Fourth color */
+  }
+  100% {
+    background-color: #891717; /* Fifth color, loops back to first */
+  }
+}
+
+.chat-list .message.incoming:hover {
+  animation: colorChange 1.3s infinite; /* রং পরিবর্তনের জন্য এনিমেশন */
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02); /* হোভার করলে জুম ইফেক্ট */
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #ff6666; /* প্রথম রং */
+  }
+  25% {
+    background-color: #66b3ff; /* দ্বিতীয় রং */
+  }
+  50% {
+    background-color: #99ff99; /* তৃতীয় রং */
+  }
+  75% {
+    background-color: #ffff99; /* চতুর্থ রং */
+  }
+  100% {
+    background-color: #ff6666; /* শেষ রং */
+  }
+}
+
+.chat-list .message .message-content {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  align-items: center;
+  padding: 1rem 1.5rem; /* Padding for better spacing */
+  border-radius: 1rem; /* Rounded corners for the message content */
+  background: linear-gradient(135deg, #5e5a49, #303641); /* Gradient background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.3s ease, background 0.3s ease; /* Smooth transition */
+}
+
+.chat-list .message .message-content:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+  color: #333; /* Change text color on hover */
+  transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.chat-list .message .text {
+  color: var(--text-color); /* Text color */
+  white-space: pre-wrap; /* Ensure line breaks are preserved */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Premium font family */
+  font-size: 1.1rem; /* Slightly larger text */
+  line-height: 1.6; /* Improved line spacing for readability */
+  letter-spacing: 0.5px; /* Slight letter spacing for a more open feel */
+  word-wrap: break-word; /* Ensure long words break if needed */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for text depth */
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for color changes */
+}
+
+@keyframes colorChange {
+  0% {
+    color: #ff6347; /* Initial color */
+  }
+  25% {
+    color: #4285f4; /* Second color */
+  }
+  50% {
+    color: #34a853; /* Third color */
+  }
+  75% {
+    color: #fbbc05; /* Fourth color */
+  }
+  100% {
+    color: #ff6347; /* Back to initial color */
+  }
+}
+
+.chat-list .message .text:hover {
+  animation: colorChange 5.2s infinite; /* 1.3s for each color change, loop forever */
+  transform: scale(1.02); /* Slight zoom effect on hover */
+  transition: transform 0.3s ease-in-out; /* Smooth zoom transition */
+}
+
+.chat-list .message.error .text {
+  color: #e55865;
+}
+
+.chat-list .message.loading .text {
+  display: none; /* Hide the text during loading */
+}
+
+.chat-list .message.loading {
+  background: linear-gradient(45deg, #f0f8ff, #b0e0e6); /* Light gradient background during loading */
+  animation: pulse 1.5s infinite ease-in-out; /* Pulsing effect on background */
+}
+
+.chat-list .message.loading::after {
+  content: 'Loading...'; /* Display loading text */
+  font-size: 1.1rem;
+  color: #ff6347; /* Loading text color */
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+
+@keyframes pulse {
+  0% {
+    background: linear-gradient(45deg, #f0f8ff, #b0e0e6);
+  }
+  50% {
+    background: linear-gradient(45deg, #b0e0e6, #f0f8ff);
+  }
+  100% {
+    background: linear-gradient(45deg, #f0f8ff, #b0e0e6);
+  }
+}
+
+.chat-list .message .avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  align-self: flex-start;
+}
+
+.chat-list .message.loading .avatar {
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.chat-list .message .icon {
+  color: var(--text-color);
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  font-size: 1.25rem;
+  margin-left: 3.5rem;
+  visibility: hidden;
+}
+
+.chat-list .message .icon.hide {
+  visibility: hidden;
+}
+
+.chat-list .message:not(.loading, .error):hover .icon:not(.hide){
+  visibility: visible;
+}
+
+.chat-list .message .icon:hover {
+  background: var(--secondary-hover-color);
+}
+
+.chat-list .message .loading-indicator {
+  display: none;
+  gap: 0.8rem;
+  width: 100%;
+  flex-direction: column;
+}
+
+.chat-list .message.loading .loading-indicator {
+  display: flex;
+}
+
+.chat-list .message .loading-indicator .loading-bar {
+  height: 11px;
+  width: 100%;
+  border-radius: 0.135rem;
+  background-position: -800px 0;
+  background: linear-gradient(to right, #4285f4, var(--primary-color), #4285f4);
+  animation: loading 3s linear infinite;
+}
+
+.chat-list .message .loading-indicator .loading-bar:last-child {
+  width: 70%;
+}
+
+@keyframes loading {
+  0% {
+    background-position: -800px 0;
+  }
+
+  100% {
+    background-position: 800px 0;
+  }
+}
+
+.typing-area {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 1rem;
+  background: var(--primary-color);
+}
+
+.typing-area :where(.typing-form, .action-buttons) {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.typing-form .input-wrapper {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  position: relative;
+}
+
+.typing-form .typing-input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1rem;
+  color: var(--text-color);
+  padding: 1.1rem 4rem 1.1rem 1.5rem;
+  border-radius: 100px;
+  background: var(--secondary-color);
+}
+
+.typing-form .typing-input:focus {
+  background: var(--secondary-hover-color);
+}
+
+.typing-form .typing-input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.typing-area .icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  font-size: 1.4rem;
+  color: var(--text-color);
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-color);
+  transition: 0.3s ease-in-out; /* Smooth transition effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow for depth */
+}
+
+/* Hover effect for the icon */
+.typing-area .icon:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  background: var(--primary-color); /* Change background color on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  color: var(--hover-text-color); /* Change text color on hover */
+}
+
+/* Active click effect */
+.typing-area .icon:active {
+  transform: scale(0.98); /* Slight shrink effect on click */
+}
+
+.typing-area .icon:hover {
+  background: var(--secondary-hover-color);
+}
+
+.typing-form #send-message-button {
+  position: absolute;
+  right: 0;
+  outline: none;
+  border: none;
+  transform: scale(0);
+  background: transparent;
+  transition: transform 0.2s ease;
+}
+
+.typing-form .typing-input:valid ~ #send-message-button {
+  transform: scale(1);
+}
+
+.typing-area .disclaimer-text {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  color: var(--placeholder-color);
+}
+
+/* Responsive media query code for small screen */
+@media (max-width: 768px) {
+  .header :is(.title, .subtitle) {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+
+  .header .subtitle {
+    font-size: 1.7rem;
+  }
+
+  .typing-area :where(.typing-form, .action-buttons) {
+    gap: 0.4rem;
+  }
+
+  .typing-form .input-wrapper {
+    height: 50px;
+  }
+
+  .typing-form .typing-input {
+    padding: 1.1rem 3.5rem 1.1rem 1.2rem;
+  }
+
+  .typing-area .icon {
+    height: 50px;
+    width: 50px;
+  }
+
+  .typing-area .disclaimer-text {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+}
